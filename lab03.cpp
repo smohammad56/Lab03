@@ -10,10 +10,10 @@ int main() {
 	distance d3(8,2);
 	distance d4(5, 8);
 
-	d1.print_measurement();
+	//d1.print_measurement();
 	d4.print_measurement();
-
-	d1 = d4*d1;
-	d1.print_measurement();
+	std::cout << std::string(d4);
+	//std::cout << d4.getmeters();
+	//d1.print_measurement();
 
 }

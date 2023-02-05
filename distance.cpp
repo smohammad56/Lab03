@@ -40,6 +40,11 @@ void distance::setinches(double i) {
 
 }
 
+double distance::getmeters() {
+	return ((feet *12) + inches) * 0.0254;
+}
+
+
 void distance::print_measurement() {
 	std::cout << "Feet: " << feet << std::endl;
 	std::cout << "Inches: " << inches << std::endl;
@@ -70,10 +75,20 @@ void distance::print_measurement() {
 	 return d1;
  }
 
- distance distance::operator*(const distance& d) {
+ distance distance::operator*(float s) {
 	 distance d1 = *this;
-	 d1.inches += (d1.feet * 12);
-	 d1.inches *= (d.inches + (d.feet * 12));
+	 d1.inches = this->inches * s;
+	 d1.feet = this->feet * s;
+
+	 d1.feet += floor(d1.inches / 12);
+	 d1.inches = int(d1.inches) % 12;
+	 return d1;
+ }
+
+ distance distance::operator/(float s) {
+	 distance d1 = *this;
+	 d1.inches = this->inches + (this->feet * 12);
+	 d1.inches /= s;
 	 d1.feet = 0;
 
 	 d1.feet += floor(d1.inches / 12);
@@ -81,6 +96,15 @@ void distance::print_measurement() {
 	 return d1;
  }
 
+ bool distance::operator==(const distance& d)
+ {
+	 return(inches == d.inches && feet == d.feet);
+ }
+
+  std::string distance::operator std::string()
+ {
+	 return "Feet: " + feet + ", Inches: " + inches;
+ }
  
 
 

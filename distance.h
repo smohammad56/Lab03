@@ -11,6 +11,7 @@ public:
 
 	int getfeet() { return feet; }
 	double getinches() { return inches; }
+	double getmeters();
 
 	void setfeet(int f);
 	void setinches(double i);
@@ -19,8 +20,10 @@ public:
 
 	distance operator+(const distance &d);
 	distance operator-(const distance &d);
-	distance operator*(const distance &d);
-	distance operator/(const distance &d);
+	distance operator*(float s);
+	distance operator/(float s);
+	bool operator==(const distance& d);
+	std::string operator std::string();
 	distance (const distance& d);
 
 private:
